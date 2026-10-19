@@ -36,7 +36,20 @@ Notes from Gregor Richards' comments:
 - [Can we reach out again for advice/help etc.?] Yes! Note on roadblocks: you should set a high goal and expect failure. Find a goal where getting 80% of it, it's still good, rather than one where getting 80% of it is still bad (or 60%, 40%: whatever your goal). You should have an unrealistic goal and strive to achieve it, though go into it knowing you expect to encounter failures. You can contact me about that goal and how you adjust it, and I'll let you know if it's what I think you should strive for and what you should go for.
 - [Could we give you the feasibility study we plan to do for MP1 and get your thoughts on it?] Sure! Though note for the week after next week, I'll be in a conference, but the week after that is reading week and I can definitely be helpful again.
 
-# Meeting 3 - September 28, 2026 (4 pm)
+## Meeting 3 - September 28, 2026 (4 pm)
 - Went over our research together and shared what we learned
 - Discussed our next goals for our design, success criteria, and MP1 slides
 - Split up work for MP1 slides and planned time to record video
+
+## Meeting 4 - October 5, 2026 (4 pm)
+- Created new abstract for MP2, modified from MP1
+- Assigned research work to begin over reading week to decide on 3 programming languages
+- Decided alternate times to meet for reading week to suit absences
+
+## Meeting 5 - October 14, 2026 (7 pm)
+- Shared some research results and what we hope out of the research (provide groups of languages that work for each axis to then get a final group of 3 picked)
+
+## Meeting 6 - October 19, 2026 (4 pm)
+- Created team contract together and submitted
+- Decided to share research findigns async to pick programming languages
+- Assigned work to decide on reaching out to professors
