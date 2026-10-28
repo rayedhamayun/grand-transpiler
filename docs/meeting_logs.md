@@ -51,5 +51,10 @@ Notes from Gregor Richards' comments:
 
 ## Meeting 6 - October 19, 2026 (4 pm)
 - Created team contract together and submitted
-- Decided to share research findigns async to pick programming languages
+- Decided to share research findings async to pick programming languages
 - Assigned work to decide on reaching out to professors
+
+## Meeting 7 - October 26, 2026 (4 pm)
+- Decided feature levels
+- Set plan to prototype level 1 transpiler, starting at our reserve meeting time for next meeting (Sunday) where we will pair program
+- Decided to start presentation earlier from when we begin prototyping
