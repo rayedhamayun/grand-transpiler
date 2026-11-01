@@ -29,20 +29,17 @@ public static class Cli
                     $"expected a multiple of {arity} integer argument(s), got {args.Length}");
             }
 
-            if (fn.Name == "NumberOfSteps")
-            {
-                int[] nums = ParseInts(args);
+            int[] nums = ParseInts(args);
 
-                for (int i = 0; i < nums.Length; i += arity)
+            for (int i = 0; i < nums.Length; i += arity)
+            {
+                var callArgs = new object[arity];
+                for (int j = 0; j < arity; j++)
                 {
-                    var callArgs = new object[arity];
-                    for (int j = 0; j < arity; j++)
-                    {
-                        callArgs[j] = nums[i + j];      // boxed to object
-                    }
-                    // null receiver because the method is static
-                    Console.WriteLine(fn.Invoke(null, callArgs));
+                    callArgs[j] = nums[i + j];      // boxed to object
                 }
+                // null receiver because the method is static
+                Console.WriteLine(fn.Invoke(null, callArgs));
             }
         }
         catch (TargetInvocationException e)

@@ -19,13 +19,11 @@ function runCli(fn: IntFunction, arity: number = fn.length): void {
       );
     }
 
-    if (fn.name === "numberOfSteps") {
-      const nums: number[] = parseInts(args);
+    const nums: number[] = parseInts(args);
 
-      for (let i = 0; i < nums.length; i += arity) {
-        //prints the output
-        console.log(fn(...nums.slice(i, i + arity)));
-      }
+    for (let i = 0; i < nums.length; i += arity) {
+      //prints the output
+      console.log(fn(...nums.slice(i, i + arity)));
     }
   } catch (err) {
     console.error((err as Error).message);

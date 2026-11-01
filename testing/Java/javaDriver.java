@@ -22,17 +22,15 @@ public class Cli {
                     "expected a multiple of " + arity + " integer argument(s), got " + args.length);
             }
 
-            if (fn.getName().equals("numberOfSteps")) {
-                int[] nums = parseInts(args);
+            int[] nums = parseInts(args);
 
-                for (int i = 0; i < nums.length; i += arity) {
-                    Object[] callArgs = new Object[arity];
-                    for (int j = 0; j < arity; j++) {
-                        callArgs[j] = nums[i + j];      // autoboxed to Integer
-                    }
-                    // null receiver because the method is static
-                    System.out.println(fn.invoke(null, callArgs));
+            for (int i = 0; i < nums.length; i += arity) {
+                Object[] callArgs = new Object[arity];
+                for (int j = 0; j < arity; j++) {
+                    callArgs[j] = nums[i + j];      // autoboxed to Integer
                 }
+                // null receiver because the method is static
+                System.out.println(fn.invoke(null, callArgs));
             }
         } catch (InvocationTargetException e) {
             // the function itself threw
