@@ -1,3 +1,5 @@
+import "./tsDriver";
+
 function numberOfSteps(num: number): number {
   let steps: number = 0;
   while (num > 0) {

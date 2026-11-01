@@ -7,5 +7,41 @@
     },
     "outputs": "results",
     "inputs": ["3", "5", "6"]
+  },
+  "fibonacci": {
+    "files": {
+      "c#": "tests/C#/fibonacci.cs",
+      "java": "tests/Java/fibonacci.java",
+      "typescript": "tests/Typescript/fibonacci.ts"
+    },
+    "outputs": "results",
+    "inputs": ["0", "1", "2", "10", "30"]
+  },
+  "fizzBuzz": {
+    "files": {
+      "c#": "tests/C#/fizzBuzz.cs",
+      "java": "tests/Java/fizzBuzz.java",
+      "typescript": "tests/Typescript/fizzBuzz.ts"
+    },
+    "outputs": "results",
+    "inputs": ["1", "3", "5", "7", "15"]
+  },
+  "happyNumber": {
+    "files": {
+      "c#": "tests/C#/happyNumber.cs",
+      "java": "tests/Java/happyNumber.java",
+      "typescript": "tests/Typescript/happyNumber.ts"
+    },
+    "outputs": "results",
+    "inputs": ["1", "2", "4", "7", "19"]
+  },
+  "subtractProductAndSum": {
+    "files": {
+      "c#": "tests/C#/subtractProductAndSum.cs",
+      "java": "tests/Java/subtractProductAndSum.java",
+      "typescript": "tests/Typescript/subtractProductAndSum.ts"
+    },
+    "outputs": "results",
+    "inputs": ["1", "10", "234", "4421", "100000"]
   }
 }
