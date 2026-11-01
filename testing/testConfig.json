@@ -1,0 +1,11 @@
+{
+  "numberOfSteps": {
+    "files": {
+      "c#": "tests/C#/numberOfSteps.cs",
+      "java": "tests/Java/numberOfSteps.java",
+      "typescript": "tests/Typescript/numberOfSteps.ts"
+    },
+    "outputs": "results",
+    "inputs": ["3", "5", "6"]
+  }
+}
