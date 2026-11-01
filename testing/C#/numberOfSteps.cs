@@ -19,9 +19,4 @@ public static class Steps
         }
         return steps;
     }
-
-    public static void Main(string[] args)
-    {
-        Cli.RunCli(typeof(Steps).GetMethod(nameof(NumberOfSteps))!, args);
-    }
 }

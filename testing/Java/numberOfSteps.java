@@ -12,8 +12,4 @@ public class Steps {
         }
         return steps;
     }
-
-    public static void main(String[] args) throws NoSuchMethodException {
-        Cli.runCli(Steps.class.getMethod("numberOfSteps", int.class), args);
-    }
 }

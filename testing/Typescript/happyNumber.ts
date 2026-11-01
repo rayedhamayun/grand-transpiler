@@ -1,6 +1,4 @@
-import { runCli } from "./tsDriver";
-
-function sumOfSquares(n: number): number {
+export function sumOfSquares(n: number): number {
   let total: number = 0;
   while (n > 0) {
     const digit: number = n % 10;
@@ -10,7 +8,7 @@ function sumOfSquares(n: number): number {
   return total;
 }
 
-function isHappy(n: number): boolean {
+export function isHappy(n: number): boolean {
   let slow: number = n;
   let fast: number = sumOfSquares(n);
   while (fast !== 1 && slow !== fast) {
@@ -22,5 +20,3 @@ function isHappy(n: number): boolean {
   }
   return false;
 }
-
-runCli(isHappy);

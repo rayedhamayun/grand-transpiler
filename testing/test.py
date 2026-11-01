@@ -9,6 +9,7 @@ import subprocess
 import sys
 import time
 import shutil
+import os
 
 
 from dataclasses import dataclass, field
@@ -126,7 +127,8 @@ def execute_command(
     cwd=None,
     arguments=None,
     stdin=None,
-    timeout=30
+    timeout=30,
+    env=None
 ):
     """
     Execute a command.
@@ -148,7 +150,8 @@ def execute_command(
         text=True,
         encoding="utf-8",
         errors="replace",
-        timeout=timeout
+        timeout=timeout,
+        env=env
     )
 
 
@@ -180,6 +183,7 @@ def get_variables(
         "program": program,
         "language": language,
         "source": str(source),
+        "source_name": Path(source).name,
         "output_dir": str(output_dir),
         "project_dir": str(project_dir),
         "class_name": class_name or Path(source).stem
@@ -210,6 +214,48 @@ def normalize_output(output, config):
 
     return output
 
+
+
+# =========================================================
+# WORKSPACES
+# =========================================================
+
+def prepare_workspace(
+    config,
+    language,
+    workspace,
+    class_name,
+    function,
+    module
+):
+    """
+    Fill a directory with the language's driver and the
+    generated entry point that calls the function under test.
+
+    Programs contain only their functions, so the same entry
+    point works for canonical and transpiled code.
+    """
+
+    base_dir = Path(config["_base_dir"])
+    lang_config = get_language_config(config, language)
+
+    workspace.mkdir(parents=True, exist_ok=True)
+
+    for name, template in lang_config.get("workspace", {}).items():
+        text = resolve_path(base_dir, template).read_text(
+            encoding="utf-8"
+        )
+
+        text = text.replace("{{class_name}}", class_name)
+        text = text.replace("{{function}}", function)
+        text = text.replace("{{module}}", module)
+
+        (workspace / name).write_text(text, encoding="utf-8")
+
+
+def clean_directory(path):
+    if path.exists():
+        shutil.rmtree(path)
 
 
 # =========================================================
@@ -347,7 +393,8 @@ def transpile(
     source_language,
     target_language,
     source_file,
-    output_file
+    output_file,
+    class_name
 ):
     """
     Invoke grand-transpiler.
@@ -358,24 +405,38 @@ def transpile(
         {target_language}
         {input}
         {output}
+        {class_name}
+
+    Directories in the optional transpiler "path" setting are
+    added to PATH for libraries the transpiler needs.
     """
 
-    command = config["transpiler"]["command"]
+    base_dir = Path(config["_base_dir"])
+
+    command = list(config["transpiler"]["command"])
+    command[0] = str(resolve_path(base_dir, command[0]))
+
+    env = dict(os.environ)
+    env["PATH"] = os.pathsep.join(
+        config["transpiler"].get("path", []) + [env.get("PATH", "")]
+    )
 
     variables = {
         "program": program,
         "source_language": source_language,
         "target_language": target_language,
         "input": str(source_file),
-        "output": str(output_file)
+        "output": str(output_file),
+        "class_name": class_name
     }
 
     try:
         result = execute_command(
             command,
             variables,
-            cwd=Path(config["_base_dir"]),
-            timeout=config.get("transpilation_timeout", 120)
+            cwd=base_dir,
+            timeout=config.get("transpilation_timeout", 120),
+            env=env
         )
 
         if result.returncode != 0:
@@ -447,7 +508,9 @@ def generate_expected_outputs(
     source_file,
     inputs,
     expected_dir,
-    class_name=None
+    workspace,
+    function,
+    class_name
 ):
     """
     Execute the canonical implementation for every input.
@@ -467,13 +530,41 @@ def generate_expected_outputs(
 
     expected_dir.mkdir(parents=True, exist_ok=True)
 
-    project_dir = source_file.parent.resolve()
+    clean_directory(workspace)
+
+    extension = get_language_config(
+        config, source_language
+    )["extension"]
+
+    # A class name means the file must be named after it.
+    declares_class = source_language in config["programs"][
+        program
+    ].get("class_names", {})
+
+    workspace_source = workspace / (
+        class_name + extension
+        if declares_class
+        else source_file.name
+    )
+
+    prepare_workspace(
+        config,
+        source_language,
+        workspace,
+        class_name,
+        function,
+        workspace_source.stem
+    )
+
+    shutil.copy(source_file, workspace_source)
+
+    project_dir = workspace.resolve()
 
     if not build_implementation(
         config,
         program,
         source_language,
-        source_file,
+        workspace_source,
         expected_dir,
         project_dir,
         class_name
@@ -493,7 +584,7 @@ def generate_expected_outputs(
             config,
             program,
             source_language,
-            source_file,
+            workspace_source,
             expected_dir,
             project_dir,
             arguments,
@@ -757,6 +848,17 @@ def test_program(
             source_file.stem
         )
 
+        function = program_config.get("entry", {}).get(
+            source_language
+        )
+
+        if not function:
+            print(
+                f"  ERROR: No entry function for "
+                f"{source_language}."
+            )
+            continue
+
         # Generate expected outputs using THIS canonical source.
         expected_outputs = generate_expected_outputs(
             config,
@@ -765,6 +867,8 @@ def test_program(
             source_file,
             inputs,
             expected_dir,
+            source_output_dir / "canonical",
+            function,
             source_class_name
         )
 
@@ -814,21 +918,25 @@ def test_program(
                 "filenames", {}
             ).get(
                 target_language,
-                program_name + extension
+                target_settings.get(
+                    "generated_name", program_name
+                ) + extension
             )
 
-            class_name = program_config.get(
-                "class_names", {}
-            ).get(
-                target_language,
-                target_settings.get(
-                    "class_name",
-                    Path(filename).stem
-                )
-            )
+            class_name = Path(filename).stem
 
             target_dir = source_output_dir / target_language
-            target_dir.mkdir(parents=True, exist_ok=True)
+
+            clean_directory(target_dir)
+
+            prepare_workspace(
+                config,
+                target_language,
+                target_dir,
+                class_name,
+                function,
+                class_name
+            )
 
             output_file = target_dir / filename
 
@@ -843,7 +951,8 @@ def test_program(
                 source_language,
                 target_language,
                 source_file,
-                output_file
+                output_file,
+                class_name
             )
 
             if not transpile_success:

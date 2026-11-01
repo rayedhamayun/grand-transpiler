@@ -1,6 +1,4 @@
-import { runCli } from "./tsDriver";
-
-function numberOfSteps(num: number): number {
+export function numberOfSteps(num: number): number {
   let steps: number = 0;
   while (num > 0) {
     if (num % 2 === 0) {
@@ -12,5 +10,3 @@ function numberOfSteps(num: number): number {
   }
   return steps;
 }
-
-runCli(numberOfSteps);

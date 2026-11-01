@@ -15,9 +15,4 @@ public static class SubtractProductAndSum
         }
         return product - sum;
     }
-
-    public static void Main(string[] args)
-    {
-        Cli.RunCli(typeof(SubtractProductAndSum).GetMethod(nameof(Compute))!, args);
-    }
 }

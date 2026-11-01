@@ -1,6 +1,4 @@
-import { runCli } from "./tsDriver";
-
-function subtractProductAndSum(n: number): number {
+export function subtractProductAndSum(n: number): number {
   let product: number = 1;
   let sum: number = 0;
   while (n > 0) {
@@ -11,5 +9,3 @@ function subtractProductAndSum(n: number): number {
   }
   return product - sum;
 }
-
-runCli(subtractProductAndSum);

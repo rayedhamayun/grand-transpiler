@@ -11,10 +11,4 @@ public class SubtractProductAndSum {
         }
         return product - sum;
     }
-
-    public static void main(String[] args) throws NoSuchMethodException {
-        Cli.runCli(
-            SubtractProductAndSum.class.getMethod("subtractProductAndSum", int.class),
-            args);
-    }
 }

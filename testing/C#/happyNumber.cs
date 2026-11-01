@@ -29,9 +29,4 @@ public static class HappyNumber
         }
         return false;
     }
-
-    public static void Main(string[] args)
-    {
-        Cli.RunCli(typeof(HappyNumber).GetMethod(nameof(IsHappy))!, args);
-    }
 }

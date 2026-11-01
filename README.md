@@ -94,6 +94,21 @@ ctest --preset default           # also runs the differential E2E suite
   `javac`, `dotnet` (a .NET 8 SDK) and `node`, and it runs TypeScript with
   Node's type stripping, so it does not type-check TypeScript output.
 
+`testing/` is the preferred runtime suite. From that folder, run:
+
+```sh
+python test.py                  # every program and language pair
+python test.py fibonacci java   # one program, translating to one target
+```
+
+It needs `javac`, `dotnet` (a .NET 8 SDK) and `node`. Each program contains only
+plain functions. For every source and target, `test.py` builds a folder under
+`testing/results/<program>/` holding the code, that language's driver, and an
+`Entry` file made from `testing/templates`. The driver passes command-line
+integers to the function named under `entry` in `config.json` and prints the
+result. Transpiled classes are named `Program`, and transpiled functions keep the
+name they have in their source language.
+
 ## Code layout
 
 | Path | Contents |

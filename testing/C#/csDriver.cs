@@ -39,7 +39,9 @@ public static class Cli
                     callArgs[j] = nums[i + j];      // boxed to object
                 }
                 // null receiver because the method is static
-                Console.WriteLine(fn.Invoke(null, callArgs));
+                object result = fn.Invoke(null, callArgs);
+                // Match Java and TypeScript, which print lowercase booleans.
+                Console.WriteLine(result is bool flag ? (flag ? "true" : "false") : result);
             }
         }
         catch (TargetInvocationException e)

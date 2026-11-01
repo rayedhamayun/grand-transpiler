@@ -14,6 +14,17 @@ public class Cli {
         return nums;
     }
 
+    public static void runCli(Class<?> owner, String name, String[] args) {
+        for (Method method : owner.getMethods()) {
+            if (method.getName().equals(name)) {
+                runCli(method, args);
+                return;
+            }
+        }
+        System.err.println("no public method named " + name);
+        System.exit(1);
+    }
+
     public static void runCli(Method fn, String[] args) {
         int arity = fn.getParameterCount();
         try {
@@ -35,7 +46,7 @@ public class Cli {
         } catch (InvocationTargetException e) {
             // the function itself threw
             System.err.println(e.getCause().getMessage());
-            System.exitCode(1);
+            System.exit(1);
         } catch (Exception e) {
             System.err.println(e.getMessage());
             System.exit(1);

@@ -1,95 +1,261 @@
 {
   "transpiler": {
     "command": [
-      "../grand-transpiler",
-      "--source-language",
-      "{source_language}",
-      "--target-language",
-      "{target_language}",
-      "--input",
+      "../build/tools/grandc/grandc",
       "{input}",
-      "--output",
-      "{output}"
+      "--to",
+      "{target_language}",
+      "-o",
+      "{output}",
+      "--class",
+      "{class_name}"
+    ],
+    "path": [
+      "C:/msys64/ucrt64/bin"
     ]
   },
-
-  "languages": ["c#", "typescript", "java"],
-
+  "languages": [
+    "cs",
+    "typescript",
+    "java"
+  ],
   "transpilation_timeout": 120,
   "build_timeout": 120,
   "execution_timeout": 30,
-
   "comparison": {
     "normalize_line_endings": true,
     "strip_trailing_whitespace": false,
     "strip_outer_whitespace": false
   },
-
   "language_commands": {
-    "c#": {
+    "cs": {
       "extension": ".cs",
-      "build": null,
-      "run": ["dotnet-script", "{source}"]
+      "generated_name": "Program",
+      "workspace": {
+        "csDriver.cs": "C#/csDriver.cs",
+        "Entry.cs": "templates/Entry.cs",
+        "app.csproj": "templates/app.csproj"
+      },
+      "build": [
+        "dotnet",
+        "build",
+        "app.csproj",
+        "-c",
+        "Release",
+        "-v",
+        "q",
+        "--nologo",
+        "-o",
+        "bin"
+      ],
+      "run": [
+        "dotnet",
+        "bin/app.dll"
+      ]
     },
-
     "typescript": {
       "extension": ".ts",
+      "generated_name": "Program",
+      "workspace": {
+        "tsDriver.ts": "Typescript/tsDriver.ts",
+        "Entry.ts": "templates/Entry.ts",
+        "package.json": "templates/package.json"
+      },
       "build": null,
-      "run": ["npx", "tsx", "{source}"]
+      "run": [
+        "node",
+        "Entry.ts"
+      ]
     },
-
     "java": {
       "extension": ".java",
-      "build": ["javac", "-d", "{output_dir}", "{source}"],
-      "run": ["java", "-cp", "{output_dir}", "{class_name}"]
+      "generated_name": "Program",
+      "workspace": {
+        "Cli.java": "Java/Cli.java",
+        "Entry.java": "templates/Entry.java"
+      },
+      "build": [
+        "javac",
+        "-encoding",
+        "UTF-8",
+        "-d",
+        "classes",
+        "{source_name}",
+        "Cli.java",
+        "Entry.java"
+      ],
+      "run": [
+        "java",
+        "-cp",
+        "classes",
+        "Entry"
+      ]
     }
   },
-
   "programs": {
     "numberOfSteps": {
       "files": {
-        "c#": "C#/numberOfSteps.cs",
+        "cs": "C#/numberOfSteps.cs",
         "java": "Java/numberOfSteps.java",
         "typescript": "Typescript/numberOfSteps.ts"
       },
-      "outputs": "results",
-      "inputs": [["3"], ["5"], ["6"]]
+      "outputs": "results/numberOfSteps",
+      "inputs": [
+        [
+          "3"
+        ],
+        [
+          "5"
+        ],
+        [
+          "6"
+        ]
+      ],
+      "entry": {
+        "cs": "NumberOfSteps",
+        "java": "numberOfSteps",
+        "typescript": "numberOfSteps"
+      },
+      "class_names": {
+        "cs": "Steps",
+        "java": "Steps"
+      }
     },
     "fibonacci": {
       "files": {
-        "c#": "C#/fibonacci.cs",
+        "cs": "C#/fibonacci.cs",
         "java": "Java/fibonacci.java",
         "typescript": "Typescript/fibonacci.ts"
       },
-      "outputs": "results",
-      "inputs": [["0"], ["1"], ["2"], ["10"], ["30"]]
+      "outputs": "results/fibonacci",
+      "inputs": [
+        [
+          "0"
+        ],
+        [
+          "1"
+        ],
+        [
+          "2"
+        ],
+        [
+          "10"
+        ],
+        [
+          "30"
+        ]
+      ],
+      "entry": {
+        "cs": "Fib",
+        "java": "fib",
+        "typescript": "fib"
+      },
+      "class_names": {
+        "cs": "FibonacciNumber",
+        "java": "FibonacciNumber"
+      }
     },
     "fizzbuzz": {
       "files": {
-        "c#": "C#/fizzbuzz.cs",
+        "cs": "C#/fizzbuzz.cs",
         "java": "Java/fizzbuzz.java",
         "typescript": "Typescript/fizzbuzz.ts"
       },
-      "outputs": "results",
-      "inputs": [["1"], ["3"], ["5"], ["7"], ["15"]]
+      "outputs": "results/fizzbuzz",
+      "inputs": [
+        [
+          "1"
+        ],
+        [
+          "3"
+        ],
+        [
+          "5"
+        ],
+        [
+          "7"
+        ],
+        [
+          "15"
+        ]
+      ],
+      "entry": {
+        "cs": "FizzBuzzAt",
+        "java": "fizzBuzzAt",
+        "typescript": "fizzBuzzAt"
+      },
+      "class_names": {
+        "cs": "FizzBuzzProblem",
+        "java": "FizzBuzzProblem"
+      }
     },
     "happyNumber": {
       "files": {
-        "c#": "C#/happyNumber.cs",
+        "cs": "C#/happyNumber.cs",
         "java": "Java/happyNumber.java",
         "typescript": "Typescript/happyNumber.ts"
       },
-      "outputs": "results",
-      "inputs": [["1"], ["2"], ["4"], ["7"], ["19"]]
+      "outputs": "results/happyNumber",
+      "inputs": [
+        [
+          "1"
+        ],
+        [
+          "2"
+        ],
+        [
+          "4"
+        ],
+        [
+          "7"
+        ],
+        [
+          "19"
+        ]
+      ],
+      "entry": {
+        "cs": "IsHappy",
+        "java": "isHappy",
+        "typescript": "isHappy"
+      },
+      "class_names": {
+        "cs": "HappyNumber",
+        "java": "HappyNumber"
+      }
     },
     "subtractProductAndSum": {
       "files": {
-        "c#": "C#/subtractProductAndSum.cs",
+        "cs": "C#/subtractProductAndSum.cs",
         "java": "Java/subtractProductAndSum.java",
         "typescript": "Typescript/subtractProductAndSum.ts"
       },
-      "outputs": "results",
-      "inputs": [["1"], ["10"], ["234"], ["4421"], ["100000"]]
+      "outputs": "results/subtractProductAndSum",
+      "inputs": [
+        [
+          "1"
+        ],
+        [
+          "10"
+        ],
+        [
+          "234"
+        ],
+        [
+          "4421"
+        ],
+        [
+          "100000"
+        ]
+      ],
+      "entry": {
+        "cs": "Compute",
+        "java": "subtractProductAndSum",
+        "typescript": "subtractProductAndSum"
+      },
+      "class_names": {
+        "cs": "SubtractProductAndSum",
+        "java": "SubtractProductAndSum"
+      }
     }
   }
 }

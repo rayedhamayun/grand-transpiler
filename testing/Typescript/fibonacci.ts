@@ -1,6 +1,4 @@
-import { runCli } from "./tsDriver";
-
-function fib(n: number): number {
+export function fib(n: number): number {
   if (n < 2) {
     return n;
   }
@@ -15,5 +13,3 @@ function fib(n: number): number {
   }
   return curr;
 }
-
-runCli(fib);

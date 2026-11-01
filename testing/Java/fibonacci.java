@@ -15,8 +15,4 @@ public class FibonacciNumber {
         }
         return curr;
     }
-
-    public static void main(String[] args) throws NoSuchMethodException {
-        Cli.runCli(FibonacciNumber.class.getMethod("fib", int.class), args);
-    }
 }

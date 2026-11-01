@@ -22,8 +22,4 @@ public class HappyNumber {
         }
         return false;
     }
-
-    public static void main(String[] args) throws NoSuchMethodException {
-        Cli.runCli(HappyNumber.class.getMethod("isHappy", int.class), args);
-    }
 }

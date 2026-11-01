@@ -20,9 +20,4 @@ public static class FibonacciNumber
         }
         return curr;
     }
-
-    public static void Main(string[] args)
-    {
-        Cli.RunCli(typeof(FibonacciNumber).GetMethod(nameof(Fib))!, args);
-    }
 }

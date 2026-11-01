@@ -1,5 +1,4 @@
 using System;
-using System.Collections.Generic;
 
 public static class FizzBuzzProblem
 {
@@ -20,20 +19,4 @@ public static class FizzBuzzProblem
         return "" + i;
     }
 
-    public static List<string> FizzBuzz(int n)
-    {
-        var result = new List<string>();
-        int i = 1;
-        while (i <= n)
-        {
-            result.Add(FizzBuzzAt(i));
-            i = i + 1;
-        }
-        return result;
-    }
-
-    public static void Main(string[] args)
-    {
-        Cli.RunCli(typeof(FizzBuzzProblem).GetMethod(nameof(FizzBuzzAt))!, args);
-    }
 }
