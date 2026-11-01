@@ -1,0 +1,23 @@
+using System;
+
+public class Prog
+{
+    public static int total = 0;
+
+    public static void add(int n)
+    {
+        total += n;
+    }
+
+    public static void Main()
+    {
+        add(2);
+        add(3);
+        if (total == 5)
+        {
+            Console.WriteLine("five");
+            return;
+        }
+        Console.WriteLine("not five");
+    }
+}

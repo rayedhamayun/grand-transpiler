@@ -1,0 +1,24 @@
+using System;
+
+public class Prog
+{
+    public static int @object(int @string)
+    {
+        int value = @string + 1;
+        return value;
+    }
+
+    public static void run()
+    {
+        const int x = 2;
+        if (x > 0)
+        {
+            const int x_2 = 5;
+            Console.WriteLine(x_2);
+        }
+        int @int = @object(x);
+        Console.WriteLine(@int);
+        const string @bool = "ok";
+        Console.WriteLine(@bool);
+    }
+}

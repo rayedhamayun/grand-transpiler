@@ -1,0 +1,22 @@
+export function run(): void {
+    const a = 12;
+    const b = 10;
+    console.log(a & b);
+    console.log(a | b);
+    console.log(a ^ b);
+    console.log(~a);
+    console.log(a << 3);
+    console.log(-16 >> 2);
+    console.log((-16 >>> 28) | 0);
+    console.log((-16 >>> 0) | 0);
+    let c = 255;
+    c &= 15;
+    c |= 32;
+    c ^= 3;
+    c <<= 2;
+    c >>= 1;
+    c = (c >>> 1) | 0;
+    console.log(c);
+    console.log(1 + 2 << 3 & 12);
+    console.log((a & b) === 8 ? 1 : 0);
+}

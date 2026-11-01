@@ -1,0 +1,24 @@
+public class Prog {
+    public static void run() {
+        String s = "tab\there \"quoted\" back\\slash";
+        System.out.println(s);
+        int n = 4;
+        System.out.println("n=" + n);
+        System.out.println(n + 1 + " then " + n + 1);
+        System.out.println("" + (n + 1));
+        String t = "ab";
+        t += "cd";
+        t += n;
+        System.out.println(t);
+        System.out.println(t.length());
+        System.out.println(t.equals("abcd4") ? "same" : "different");
+        System.out.println(!t.equals("x") ? "same" : "different");
+        System.out.println(String.valueOf(n) + Integer.toString(n));
+        System.out.println(("x" + t).length());
+        System.out.print("no newline");
+        System.out.print(n);
+        System.out.println();
+        System.out.println("line1\nline2");
+        System.out.println("caf\u00e9 ok");
+    }
+}

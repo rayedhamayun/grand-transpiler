@@ -1,0 +1,18 @@
+public class Prog {
+    public static int object(int string) {
+        final int value = string + 1;
+        return value;
+    }
+
+    public static void run() {
+        final int x = 2;
+        if (x > 0) {
+            final int x_2 = 5;
+            System.out.println(x_2);
+        }
+        final int int_ = object(x);
+        System.out.println(int_);
+        final String bool = "ok";
+        System.out.println(bool);
+    }
+}

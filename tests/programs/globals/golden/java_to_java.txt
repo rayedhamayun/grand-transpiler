@@ -1,0 +1,25 @@
+public class Prog {
+    public static final int LIMIT = 3;
+    public static int counter = LIMIT * 2;
+    public static int unset = 0;
+    public static boolean ready = false;
+    public static String label = "count";
+
+    public static void tick() {
+        counter++;
+        unset += 2;
+        ready = !ready;
+    }
+
+    public static void run() {
+        tick();
+        tick();
+        tick();
+        System.out.println(label + ": " + counter);
+        System.out.println(unset);
+        if (ready) {
+            label = "done";
+        }
+        System.out.println(label);
+    }
+}

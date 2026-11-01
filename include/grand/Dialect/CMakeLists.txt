@@ -1,0 +1,8 @@
+set(LLVM_TARGET_DEFINITIONS Grand.td)
+mlir_tablegen(GrandDialect.h.inc -gen-dialect-decls -dialect=grand)
+mlir_tablegen(GrandDialect.cpp.inc -gen-dialect-defs -dialect=grand)
+mlir_tablegen(GrandTypes.h.inc -gen-typedef-decls -typedefs-dialect=grand)
+mlir_tablegen(GrandTypes.cpp.inc -gen-typedef-defs -typedefs-dialect=grand)
+mlir_tablegen(GrandOps.h.inc -gen-op-decls)
+mlir_tablegen(GrandOps.cpp.inc -gen-op-defs)
+add_public_tablegen_target(GrandIncGen)

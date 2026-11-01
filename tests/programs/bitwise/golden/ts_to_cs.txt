@@ -1,0 +1,28 @@
+using System;
+
+public class Prog
+{
+    public static void run()
+    {
+        const int a = 12;
+        const int b = 10;
+        Console.WriteLine(a & b);
+        Console.WriteLine(a | b);
+        Console.WriteLine(a ^ b);
+        Console.WriteLine(~a);
+        Console.WriteLine(a << 3);
+        Console.WriteLine(-16 >> 2);
+        Console.WriteLine(-16 >>> 28);
+        Console.WriteLine(-16 >>> 0);
+        int c = 255;
+        c &= 15;
+        c |= 32;
+        c ^= 3;
+        c <<= 2;
+        c >>= 1;
+        c >>>= 1;
+        Console.WriteLine(c);
+        Console.WriteLine(1 + 2 << 3 & 12);
+        Console.WriteLine((a & b) == 8 ? 1 : 0);
+    }
+}

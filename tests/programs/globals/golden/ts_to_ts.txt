@@ -1,0 +1,23 @@
+export const LIMIT = 3;
+export let counter = LIMIT * 2;
+export let unset = 0;
+export let ready = false;
+export let label = "count";
+
+export function tick(): void {
+    counter++;
+    unset += 2;
+    ready = !ready;
+}
+
+export function run(): void {
+    tick();
+    tick();
+    tick();
+    console.log(label + ": " + counter);
+    console.log(unset);
+    if (ready) {
+        label = "done";
+    }
+    console.log(label);
+}

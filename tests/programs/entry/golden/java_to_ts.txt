@@ -1,0 +1,17 @@
+export let total = 0;
+
+export function add(n: number): void {
+    total += n;
+}
+
+function main(): void {
+    add(2);
+    add(3);
+    if (total === 5) {
+        console.log("five");
+        return;
+    }
+    console.log("not five");
+}
+
+main();

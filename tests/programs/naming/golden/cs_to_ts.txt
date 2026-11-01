@@ -1,0 +1,13 @@
+export function number(let_: number): number {
+    const function_ = let_ + 1;
+    return function_;
+}
+
+export function run(): void {
+    const var1 = 2;
+    console.log(5);
+    const final = number(var1);
+    console.log(final);
+    const native = "ok";
+    console.log(native);
+}

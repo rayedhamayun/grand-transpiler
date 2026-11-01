@@ -1,0 +1,15 @@
+public class Prog {
+    public static int number(int let) {
+        int function = let + 1;
+        return function;
+    }
+
+    public static void run() {
+        int var1 = 2;
+        System.out.println(5);
+        int final_ = number(var1);
+        System.out.println(final_);
+        String native_ = "ok";
+        System.out.println(native_);
+    }
+}
