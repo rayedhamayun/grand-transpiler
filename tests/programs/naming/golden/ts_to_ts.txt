@@ -1,0 +1,16 @@
+export function object(string: number): number {
+    const value = string + 1;
+    return value;
+}
+
+export function run(): void {
+    const x = 2;
+    if (x > 0) {
+        const x = 5;
+        console.log(x);
+    }
+    const int = object(x);
+    console.log(int);
+    const bool = "ok";
+    console.log(bool);
+}

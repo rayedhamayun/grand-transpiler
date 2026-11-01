@@ -1,0 +1,13 @@
+export function object(string: number): number {
+    const let_ = string + 1;
+    return let_;
+}
+
+export function run(): void {
+    const in_ = 2;
+    console.log(5);
+    const function_ = object(in_);
+    console.log(function_);
+    const params = "ok";
+    console.log(params);
+}

@@ -1,0 +1,13 @@
+public class Prog {
+    public static int total = 0;
+
+    public static void add(int n) {
+        total += n;
+    }
+
+    public static void main(String[] args) {
+        add(2);
+        add(3);
+        System.out.println(total == 5 ? "five" : "not five");
+    }
+}

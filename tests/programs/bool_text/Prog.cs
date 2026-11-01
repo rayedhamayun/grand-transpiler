@@ -1,0 +1,12 @@
+using System;
+
+public class Prog
+{
+    public static void run()
+    {
+        bool yes = 1 < 2;
+        Console.WriteLine(yes);
+        Console.WriteLine("value: " + yes);
+        Console.WriteLine($"interpolated {!yes}");
+    }
+}

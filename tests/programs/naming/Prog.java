@@ -1,0 +1,15 @@
+public class Prog {
+    static int object(int string) {
+        int let = string + 1;
+        return let;
+    }
+
+    public static void run() {
+        int in = 2;
+        System.out.println(5);
+        int function = object(in);
+        System.out.println(function);
+        String params = "ok";
+        System.out.println(params);
+    }
+}

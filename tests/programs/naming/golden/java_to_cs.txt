@@ -1,0 +1,20 @@
+using System;
+
+public class Prog
+{
+    public static int @object(int @string)
+    {
+        int let = @string + 1;
+        return let;
+    }
+
+    public static void run()
+    {
+        int @in = 2;
+        Console.WriteLine(5);
+        int function = @object(@in);
+        Console.WriteLine(function);
+        string @params = "ok";
+        Console.WriteLine(@params);
+    }
+}

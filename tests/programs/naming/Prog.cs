@@ -1,0 +1,20 @@
+using System;
+
+public class Prog
+{
+    static int number(int let)
+    {
+        int function = let + 1;
+        return function;
+    }
+
+    public static void run()
+    {
+        int var1 = 2;
+        Console.WriteLine(5);
+        int final = number(var1);
+        Console.WriteLine(final);
+        string native = "ok";
+        Console.WriteLine(native);
+    }
+}
