@@ -1,4 +1,4 @@
-import "./tsDriver";
+import { runCli } from "./tsDriver";
 
 function fizzBuzzAt(i: number): string {
   if (i % 15 === 0) {

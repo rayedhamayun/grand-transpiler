@@ -9,7 +9,7 @@ function parseInts(args: string[]): number[] {
   });
 }
 
-function runCli(fn: IntFunction, arity: number = fn.length): void {
+export function runCli(fn: IntFunction, arity: number = fn.length): void {
   try {
     const args: string[] = process.argv.slice(2);
 

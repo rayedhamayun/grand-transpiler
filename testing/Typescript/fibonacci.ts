@@ -1,4 +1,4 @@
-import "./tsDriver";
+import { runCli } from "./tsDriver";
 
 function fib(n: number): number {
   if (n < 2) {

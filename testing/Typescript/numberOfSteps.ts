@@ -1,4 +1,4 @@
-import "./tsDriver";
+import { runCli } from "./tsDriver";
 
 function numberOfSteps(num: number): number {
   let steps: number = 0;

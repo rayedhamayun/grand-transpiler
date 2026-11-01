@@ -1,4 +1,3 @@
-
 {
   "transpiler": {
     "command": [
@@ -14,11 +13,7 @@
     ]
   },
 
-  "languages": [
-    "c#",
-    "typescript",
-    "java"
-  ],
+  "languages": ["c#", "typescript", "java"],
 
   "transpilation_timeout": 120,
   "build_timeout": 120,
@@ -31,40 +26,22 @@
   },
 
   "language_commands": {
-
     "c#": {
       "extension": ".cs",
       "build": null,
-      "run": [
-        "dotnet-script",
-        "{source}"
-      ]
+      "run": ["dotnet-script", "{source}"]
     },
 
     "typescript": {
       "extension": ".ts",
       "build": null,
-      "run": [
-        "npx",
-        "tsx",
-        "{source}"
-      ]
+      "run": ["npx", "tsx", "{source}"]
     },
 
     "java": {
       "extension": ".java",
-      "build": [
-        "javac",
-        "-d",
-        "{output_dir}",
-        "{source}"
-      ],
-      "run": [
-        "java",
-        "-cp",
-        "{output_dir}",
-        "{class_name}"
-      ]
+      "build": ["javac", "-d", "{output_dir}", "{source}"],
+      "run": ["java", "-cp", "{output_dir}", "{class_name}"]
     }
   },
 
@@ -87,11 +64,11 @@
       "outputs": "results",
       "inputs": [["0"], ["1"], ["2"], ["10"], ["30"]]
     },
-    "fizzBuzz": {
+    "fizzbuzz": {
       "files": {
-        "c#": "C#/fizzBuzz.cs",
-        "java": "Java/fizzBuzz.java",
-        "typescript": "Typescript/fizzBuzz.ts"
+        "c#": "C#/fizzbuzz.cs",
+        "java": "Java/fizzbuzz.java",
+        "typescript": "Typescript/fizzbuzz.ts"
       },
       "outputs": "results",
       "inputs": [["1"], ["3"], ["5"], ["7"], ["15"]]

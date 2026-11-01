@@ -1,4 +1,4 @@
-import "./tsDriver";
+import { runCli } from "./tsDriver";
 
 function sumOfSquares(n: number): number {
   let total: number = 0;

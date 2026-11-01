@@ -1,4 +1,4 @@
-import "./tsDriver";
+import { runCli } from "./tsDriver";
 
 function subtractProductAndSum(n: number): number {
   let product: number = 1;

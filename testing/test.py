@@ -8,6 +8,8 @@ import shlex
 import subprocess
 import sys
 import time
+import shutil
+
 
 from dataclasses import dataclass, field
 from pathlib import Path
@@ -110,10 +112,12 @@ def expand_command(command, variables):
     if isinstance(command, str):
         command = shlex.split(command)
 
-    return [
-        str(argument).format_map(variables)
-        for argument in command
-    ]
+    expanded = [str(a).format_map(variables) for a in command]
+
+    exe = shutil.which(expanded[0])
+    if exe:
+        expanded[0] = exe
+    return expanded
 
 
 def execute_command(
