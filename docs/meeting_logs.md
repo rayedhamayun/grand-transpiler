@@ -71,3 +71,7 @@ Notes from Gregor Richards' comments:
 Summary of Krzysztof Czarnecki's comments:
 - Analyze the problem/solution space more: what are challenges we expect and solutions to them? Use this to inform your future work and scope.
 - Look more into advanced/weird language features that are more difficult to transpile because of significant mismatches between languages.
+
+## Meeting 10 - November 9, 2026 (4:00 pm)
+- Submitted abstract for MP3
+- Set work to research difficult language conversions
