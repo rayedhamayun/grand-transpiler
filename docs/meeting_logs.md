@@ -58,3 +58,16 @@ Notes from Gregor Richards' comments:
 - Decided feature levels
 - Set plan to prototype level 1 transpiler, starting at our reserve meeting time for next meeting (Sunday) where we will pair program
 - Decided to start presentation earlier from when we begin prototyping
+
+## Meeting 8 - November 1, 2026 (1 pm)
+- Began pair programming and completed level 1 features in the transpiler
+- Designed, created, and integrated test suite for the transpiler
+
+## Meeting 9 - November 2, 2026 (9:15 pm)
+- Created and submitted slides for MP2 review
+- Recorded, editted, and submitted video for MP2 review
+
+## MP2 Check in Meeting - November 5, 2026 (4:30 pm)
+Summary of Krzysztof Czarnecki's comments:
+- Analyze the problem/solution space more: what are challenges we expect and solutions to them? Use this to inform your future work and scope.
+- Look more into advanced/weird language features that are more difficult to transpile because of significant mismatches between languages.
